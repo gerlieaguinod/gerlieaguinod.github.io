@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Chicle&family=Frijole&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chicle&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chicle&family=Frijole&family=Monoton&family=Oswald:wght@200..700&display=swap');
+
+body, h1, p, div {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #a03f0e;
+  background-image:  url('hehe.avif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #f1e3e3;
+
+}
+
+
+header {
+  background: #582004;
+  color: #fff;
+  padding: 1em 2em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family:'Monoton';
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+header h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2em;
+  gap: 1em; 
+}
+
+main .column1, 
+main .column2, 
+main .column3 {
+    flex: 1; 
+    border: 2px solid #fff;
+    padding: 1em;
+    background: rgba(221, 118, 55, 0.8);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px; 
+}
+main .column1, 
+main .column2 {
+    text-align: center; /* Center the text horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the text vertically */
+    align-items: center;
+    height: 100%; /* Ensure the column height adapts */
+}
+
+main h1 {
+  font-size: 1.5em;
+  color: #582004;
+  margin-bottom: 10px;
+  text-align: center;
+  border-bottom: 2px solid #2d0f01;
+  padding-bottom: 5px;
+  font-family:'Frijole';
+}
+
+main p {
+  font-size: 1em;
+  color: #ffffff
+  text-align: center;
+  line-height: 1.6;
+  font-family:'Chicle';
+  text-position: 'center';
+}
+
+main .column3 img{
+  max-height: 120px;
+  max-width: 120px;
+  border-radius: 50px;
+}

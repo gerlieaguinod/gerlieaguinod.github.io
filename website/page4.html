@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cooling and Heating Calculator</title>
+  <link rel="stylesheet" href="forstyling4.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">COOLING AND HEATING CALCULATOR</h1>
+    <div class="form">
+      <div class="row">
+        <label>Current Temperature (T):</label>
+        <input type="number" id="currentTemp" placeholder="Enter current temperature">
+        <label>New Temperature (T₁):</label>
+        <input type="number" id="newTemp" placeholder="Enter new temperature">
+      </div>
+      <div class="row">
+        <label>Surrounding Temperature (Tₘ):</label>
+        <input type="number" id="surroundingTemp" placeholder="Enter surrounding temperature">
+        <label>Time (t in minutes):</label>
+        <input type="number" id="time" placeholder="Enter time">
+      </div>
+      <div class="divider"></div>
+      <div class="row options">
+        <p>WHAT WOULD YOU LIKE TO CALCULATE?</p>
+        <label>
+          <input type="radio" name="calculationType" value="finalTime">
+          Final Time (t)
+        </label>
+        <label>
+          <input type="radio" name="calculationType" value="finalTemperature">
+          Final Temperature (T)
+        </label>
+      </div>
+      <div class="row">
+        <label>Enter Final Temperature (T):</label>
+        <input type="number" id="finalTemp" placeholder="Enter final temperature">
+        <label>Enter Future Time (t in minutes):</label>
+        <input type="number" id="futureTime" placeholder="Enter future time">
+      </div>
+      <div class="button-row">
+        <button onclick="calculateCoolingHeating()">CALCULATE</button>
+      </div>
+      <p id="result" class="result"></p>
+    </div>
+  </div>
+
+  <script>
+    function calculateCoolingHeating() {
+      // Inputs
+      const T = parseFloat(document.getElementById("currentTemp").value);
+      const T1 = parseFloat(document.getElementById("newTemp").value);
+      const Tm = parseFloat(document.getElementById("surroundingTemp").value);
+      const t = parseFloat(document.getElementById("time").value);
+      const FTemp = parseFloat(document.getElementById("finalTemp").value);
+      const FTime = parseFloat(document.getElementById("futureTime").value);
+      const calculationType = document.querySelector('input[name="calculationType"]:checked')?.value;
+
+      let result = "";
+
+      if (isNaN(T) || isNaN(T1) || isNaN(Tm) || isNaN(t) || T <= 0 || T1 <= 0 || Tm <= 0 || t <= 0) {
+        result = "Error: Please enter valid inputs for temperatures and time.";
+      } else {
+        const C = T - Tm;
+        const K = Math.log(Math.abs((T1 - Tm) / C)) / t;
+
+        if (calculationType === "finalTime") {
+          if (isNaN(FTemp) || FTemp <= 0) {
+            result = "Error: Final temperature (T) must be greater than 0.";
+          } else {
+            const finalTime = Math.log(Math.abs((FTemp - Tm) / C)) / K;
+            result = `The final time (t) is: ${finalTime.toFixed(4)} minutes.`;
+          }
+        } else if (calculationType === "finalTemperature") {
+          if (isNaN(FTime) || FTime <= 0) {
+            result = "Error: Future time (t) must be greater than 0.";
+          } else {
+            const finalTemp = Tm + C * Math.exp(K * FTime);
+            result = `The final temperature (T) is: ${finalTemp.toFixed(4)}°C.`;
+          }
+        } else {
+          result = "Please select what you would like to calculate.";
+        }
+      }
+
+      // Display the result
+      const resultElement = document.getElementById("result");
+      resultElement.textContent = result;
+    }
+  </script>
+</body>
+</html>

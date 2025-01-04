@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Population Growth Calculator</title>
+  <link rel="stylesheet" href="forstyling3.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">POPULATION GROWTH CALCULATOR</h1>
+    <div class="form">
+      <div class="row">
+        <label>Current Population (P):</label>
+        <input type="number" id="currentPopulation" placeholder="Enter current population">
+        <label>New Population (P₁):</label>
+        <input type="number" id="newPopulation" placeholder="Enter new population">
+      </div>
+      <div class="row">
+        <label>Time (t in minutes):</label>
+        <input type="number" id="time" placeholder="Enter time">
+      </div>
+      <div class="divider"></div>
+      <div class="row options">
+        <p>WHAT WOULD YOU LIKE TO CALCULATE?</p>
+        <label>
+          <input type="radio" name="calculationType" value="finalTime">
+          Final Time (Ft)
+        </label>
+        <label>
+          <input type="radio" name="calculationType" value="finalPopulation">
+          Final Population (FP)
+        </label>
+      </div>
+      <div class="row">
+        <label>Enter Final Population (P):</label>
+        <input type="number" id="finalPopulation" placeholder="Enter final population">
+        <label>Enter Future Time (t in minutes):</label>
+        <input type="number" id="futureTime" placeholder="Enter future time">
+      </div>
+      <div class="button-row">
+        <button onclick="calculatePopulationGrowth()">CALCULATE</button>
+      </div>
+      <p id="result" class="result"></p>
+    </div>
+  </div>
+
+  <script>
+    function calculatePopulationGrowth() {
+      // Inputs
+      const P = parseFloat(document.getElementById("currentPopulation").value);
+      const P1 = parseFloat(document.getElementById("newPopulation").value);
+      const t = parseFloat(document.getElementById("time").value);
+      const Fpop = parseFloat(document.getElementById("finalPopulation").value);
+      const Ftime = parseFloat(document.getElementById("futureTime").value);
+      const calculationType = document.querySelector('input[name="calculationType"]:checked')?.value;
+
+      let result = "";
+
+      if (!P || !P1 || !t || P <= 0 || P1 <= 0 || t <= 0) {
+        result = "Error: Please enter valid inputs for population and time.";
+      } else {
+        const C = P;
+        const K = Math.log(P1 / C) / t;
+
+        if (calculationType === "finalTime") {
+          if (!Fpop || Fpop <= 0) {
+            result = "Error: Final population (P) must be greater than 0.";
+          } else {
+            const finalTime = Math.log(Fpop / C) / K;
+            result = `The final time (t) is: ${finalTime.toFixed(4)} minutes.`;
+          }
+        } else if (calculationType === "finalPopulation") {
+          if (!Ftime || Ftime <= 0) {
+            result = "Error: Future time (t) must be greater than 0.";
+          } else {
+            const finalPopulation = C * Math.exp(K * Ftime);
+            result = `The final population (P) is: ${finalPopulation.toFixed(4)}.`;
+          }
+        } else {
+          result = "Please select what you would like to calculate.";
+        }
+      }
+
+      // Display the result
+      const resultElement = document.getElementById("result");
+      resultElement.textContent = result;
+    }
+  </script>
+</body>
+</html>
+

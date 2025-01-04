@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Chicle&family=Frijole&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chicle&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chicle&family=Frijole&family=Monoton&family=Oswald:wght@200..700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  background-color: #5a2707;
+  color: rgb(169, 97, 42);
+  display: flex;
+  align-items: center;
+  padding: 30px 40px;
+  justify-content: space-between;
+  font-family: 'Monoton';
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+  margin-left:20px;
+}
+
+header .logo h1 {
+  font-size: 40px;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 10px;
+}
+
+nav a {
+  background-color:rgb(213, 158, 74);
+  color: #a03d00;
+  text-decoration: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  border-style:groove;
+  border-color:#d2691e;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+nav a:hover {
+  background-color: #d2691e;
+  color: white;
+}
+
+
+main {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hehe.avif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: rgb(213, 158, 74);
+  text-align: center;
+  padding: 60px 20px;
+  display:flex;
+  flex-direction: row;
+}
+
+
+main h1{
+  font-family: 'Frijole';
+  font-size: 80px;
+  margin-bottom: 0px;
+
+}
+
+main  p{
+  font-family: 'Chicle';
+  margin-top: 0px;
+}
+.intro{
+  margin-top: 90px;
+  margin-left: 80px;
+  
+}
+
+.dec-title {
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 2.0;
+  margin-left: 180 px;
+  margin-top: 10px;
+  font-family:'Chicle';
+  
+}
+
+.dec-title span {
+  color:#d2691e;
+  font-style: oblique;
+  font-size: 80px;
+  font-family: 'Frijole';
+  margin-left: 180px;
+  margin-top: 10px;
+}
+
+
+.end {
+  background-color: #4f2105;
+  color: rgb(173, 105, 52);
+  text-align: center;
+  padding: 30px;
+  box-shadow: #d2691e;
+  font-size: 20px;
+  font-family: 'Monoton'
+}

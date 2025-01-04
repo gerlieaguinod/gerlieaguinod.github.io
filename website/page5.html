@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversion Calculator</title>
+  <link rel="stylesheet" href="forstyling5.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">CONVERSION CALCULATOR</h1>
+
+    <!-- Fahrenheit to Celsius Conversion -->
+    <div class="form">
+      <h2>Fahrenheit to Celsius</h2>
+      <div class="row">
+        <label for="fahrenheit">Temperature in Fahrenheit:</label>
+        <input type="number" id="fahrenheit" placeholder="Enter °F">
+      </div>
+      <div class="button-row">
+        <button onclick="convertFahrenheitToCelsius()">CONVERT</button>
+      </div>
+      <p id="temperatureResult" class="result"></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Time Units to Years Conversion -->
+    <div class="form">
+      <h2>Convert Time Units to Years</h2>
+      <div class="row">
+        <label for="seconds">Seconds:</label>
+        <input type="number" id="seconds" placeholder="Enter seconds">
+      </div>
+      <div class="row">
+        <label for="minutes">Minutes:</label>
+        <input type="number" id="minutes" placeholder="Enter minutes">
+      </div>
+      <div class="row">
+        <label for="days">Days:</label>
+        <input type="number" id="days" placeholder="Enter days">
+      </div>
+      <div class="row">
+        <label for="decades">Decades:</label>
+        <input type="number" id="decades" placeholder="Enter decades">
+      </div>
+      <div class="row">
+        <label for="centuries">Centuries:</label>
+        <input type="number" id="centuries" placeholder="Enter centuries">
+      </div>
+      <div class="button-row">
+        <button onclick="convertToYears()">CONVERT</button>
+      </div>
+      <div id="timeResults" class="result"></div>
+    </div>
+  </div>
+
+  <script>
+    // Function to convert Fahrenheit to Celsius
+    function convertFahrenheitToCelsius() {
+      const fahrenheit = parseFloat(document.getElementById("fahrenheit").value);
+      const celsius = (fahrenheit - 32) * 5 / 9;
+
+      if (isNaN(fahrenheit)) {
+        document.getElementById("temperatureResult").textContent = "Error: Please enter a valid Fahrenheit temperature.";
+      } else {
+        document.getElementById("temperatureResult").textContent = 
+          `${fahrenheit}°F = ${celsius.toFixed(2)}°C`;
+      }
+    }
+
+    // Function to convert individual time units to years
+    function convertToYears() {
+      const seconds = parseFloat(document.getElementById("seconds").value || 0);
+      const minutes = parseFloat(document.getElementById("minutes").value || 0);
+      const days = parseFloat(document.getElementById("days").value || 0);
+      const decades = parseFloat(document.getElementById("decades").value || 0);
+      const centuries = parseFloat(document.getElementById("centuries").value || 0);
+
+      const secondsToYears = seconds / (60 * 60 * 24 * 365);
+      const minutesToYears = minutes / (60 * 24 * 365);
+      const daysToYears = days / 365;
+      const decadesToYears = decades * 10;
+      const centuriesToYears = centuries * 100;
+
+      if ([seconds, minutes, days, decades, centuries].every(value => value === 0)) {
+        document.getElementById("timeResults").textContent = "Error: Please enter at least one valid input.";
+      } else {
+        document.getElementById("timeResults").innerHTML = `
+          <p>Seconds to Years: ${secondsToYears.toFixed(6)}</p>
+          <p>Minutes to Years: ${minutesToYears.toFixed(6)}</p>
+          <p>Days to Years: ${daysToYears.toFixed(6)}</p>
+          <p>Decades to Years: ${decadesToYears.toFixed(2)}</p>
+          <p>Centuries to Years: ${centuriesToYears.toFixed(2)}</p>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
