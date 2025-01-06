@@ -71,7 +71,7 @@
             result = "Error: Final temperature (T) must be greater than 0.";
           } else {
             const finalTime = Math.log(Math.abs((FTemp - Tm) / C)) / K;
-            result = `The final time (t) is: ${finalTime.toFixed(4)} minutes.`;
+            result = `The final time (t) is: ${finalTime.toFixed(4)}.`;
           }
         } else if (calculationType === "finalTemperature") {
           if (isNaN(FTime) || FTime <= 0) {
