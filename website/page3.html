@@ -68,7 +68,7 @@
             result = "Error: Final population (P) must be greater than 0.";
           } else {
             const finalTime = Math.log(Fpop / C) / K;
-            result = `The final time (t) is: ${finalTime.toFixed(4)} minutes.`;
+            result = `The final time (t) is: ${finalTime.toFixed(4)}.`;
           }
         } else if (calculationType === "finalPopulation") {
           if (!Ftime || Ftime <= 0) {
